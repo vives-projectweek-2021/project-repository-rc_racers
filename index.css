@@ -15,7 +15,15 @@ html {
 }
 
 body {
-	background: #444;
+	background: linear-gradient(
+    to bottom right,  
+    #2C3E50, #FD746C, 
+    #FF8235, #ffff1c, 
+    #92FE9D, #00C9FF, 
+    #a044ff, #e73827);
+  background-repeat: no-repeat;
+  background-size: 1000% 1000%;
+  animation: gradient 100s ease infinite;
 	text-align: center;
 }
 
@@ -55,6 +63,7 @@ body.connected .content {
 	color: white;
 	margin-left: 17%;
 	margin-right: 17%;
+	font-size: 20px;
 }
 
 .title {
@@ -74,12 +83,6 @@ body.connected .content {
 	height: calc(100vh - var(--settings-height) - 10vh);
 }
 
-.content svg {
-	position: absolute;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
 
 
 /* Animations */
@@ -129,7 +132,7 @@ body.connected .content {
 	top: calc(100vh - var(--settings-height));
 	width: 100%;
 	min-height: var(--settings-height);
-	background: #333;
+	
 
 	transition: opacity .3s ease-in-out;
 	opacity: 0.3;

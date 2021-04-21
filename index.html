@@ -11,17 +11,16 @@
 		<meta name="theme-color" content="#8cc63f">
 	</head>
 	
-	<body class='control'>
-		<div class='connect'>
+	<body class="control">
+		<div class="connect">
 			<h1>
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 136"><path d="M55.48,33.58,66.69,44.82,55.49,56.06V33.58Zm0,68.83L66.69,91.17,55.49,79.93v22.48ZM43.51,68,19.28,43.63l7-7.05L45.61,56V9.53l35.1,35.21L57.53,68,80.72,91.25,45.61,126.47V80L26.3,99.42l-7-7L43.51,68ZM50,136c29.6,0,50-14.11,50-68S79.6,0,50,0,0,14.11,0,68s20.4,68,50,68Z"/></svg>
-				Racer<em>!</em>
+				<p>Bluetooth</p>
 			</h1>
 			<p>
 				To use this. You need a LEGO RC Tracked Racer with SBrick. Don't have one? <a id='emulate'>Emulate!</a>
 			</p>
 
-			<button id='connect'>Connect</button>
+			<button id="connect">Connect</button>
 		</div>
 		<div>
 			<h1 class="title">RC-Racers</h1>
@@ -36,24 +35,24 @@
 			<h2>Score</h2>
 		</div>
 		
-		<div class='settings'>
-			<div class='pills'>
+		<div class="settings">
+			<div class="pills">
 				<h2 class="controls">Controls</h2>
-				<button id='control'>Control</button>
-				<button class="custom" id='customize'>Customize</button>
+				<button id="control">Control</button>
+				<button class="custom" id="customize">Customize</button>
 			</div>
 		
-			<div class='views'>
-				<div id='controlView'>
-					<div id='controls'>
-						<button id='button-forward' data-down='forward' data-up='stop'>▲&#xFE0E;</button>
-						<button id='button-left' data-down='left' data-up='stop'>◀&#xFE0E;</button>
-						<button id='button-right' data-down='right' data-up='stop'>▶&#xFE0E;</button>
-						<button id='button-reverse' data-down='reverse' data-up='stop'>▼&#xFE0E;</button>
+			<div class="views">
+				<div id="controlView">
+					<div id="controls">
+						<button id="button-forward" data-down="forward" data-up="stop">▲&#xFE0E;</button>
+						<button id="button-left" data-down="left" data-up="stop">◀&#xFE0E;</button>
+						<button id="button-right" data-down="right" data-up="stop">▶&#xFE0E;</button>
+						<button id="button-reverse" data-down="reverse" data-up="stop">▼&#xFE0E;</button>
 					</div>
 				</div>
 				
-				<div id='customizeView'>
+				<div id="customizeView">
 					<style>
 						
 						:root {
@@ -66,7 +65,7 @@
 						
 					</style>			
 			
-					<style id='style' contenteditable='plaintext-only'>
+					<style id="style" contenteditable="plaintext-only">
 	@keyframes track {
 	  0%  { --direction: 'left'; }
 	  10% { --direction: 'right'; }
