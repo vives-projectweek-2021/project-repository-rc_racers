@@ -1,0 +1,267 @@
+
+/* Basic layout */
+
+:root {
+	--settings-height: 40vh;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", sans-serif;
+}
+
+body {
+	background: #444;
+	text-align: center;
+}
+
+button {
+	color: #888;
+	background: none;
+	border: .3vh solid #888;
+	border-radius: 1vh;
+	outline: none;
+	cursor: pointer;
+}
+
+.video {
+	max-width: 400px;
+	max-height: 400px;
+}
+
+
+
+/* Content */
+
+.content {
+	opacity: 0.3;
+	transition: opacity .5s, fill .5s;
+}
+
+body.connected .content {
+	opacity: 1;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+	color: white;
+	margin-left: 17%;
+	margin-right: 17%;
+}
+
+.title {
+	color: white;
+	font-size: 30px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+/* Racer */
+
+.content .racer {
+	position: absolute;
+	top: 5vh;
+	left: 10vw;
+	width: 80vw;
+	height: calc(100vh - var(--settings-height) - 10vh);
+}
+
+.content svg {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+/* Animations */
+
+#car {
+	transform-origin: center center;
+	transition: transform .2s ease-out;
+}
+.forward #car {
+	transform: translateY(-30px);
+}
+.reverse #car {
+	transform: translateY(30px);
+}
+.left #car {
+	transform: rotate(-10deg);
+}
+.right #car {
+	transform: rotate(10deg);
+}
+
+.forward #left-track, .forward #right-track {
+	fill: url(#forward);
+}
+.reverse #left-track, .reverse #right-track {
+	fill: url(#reverse);
+}
+.left #left-track {
+	fill: url(#reverse);
+}
+.left #right-track {
+	fill: url(#forward);
+}
+.right #left-track {
+	fill: url(#forward);
+}
+.right #right-track {
+	fill: url(#reverse);
+}
+
+
+
+/* Settings */
+
+.settings {
+	position: absolute;
+	top: calc(100vh - var(--settings-height));
+	width: 100%;
+	min-height: var(--settings-height);
+	background: #333;
+
+	transition: opacity .3s ease-in-out;
+	opacity: 0.3;
+	pointer-events: none;
+}
+body.connected .settings {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.controls {
+	color: white;
+	font-size: 30px;
+	margin-top: 35px;
+}
+
+
+/* Pills */
+
+.pills {
+	margin-top: -2.4vh;
+	margin-bottom: 0;
+	display: flex;
+}
+.pills button {
+	display: none;
+	margin: 0;
+	padding: 1vh 2vh;
+	border-radius: 0;
+	border-left: none;
+	font-size: 2vh;
+	background: #333;
+}
+.pills button:first-of-type {
+	border-left: .3vh solid #888;
+	border-top-left-radius: 1vh;
+	border-bottom-left-radius: 1vh;
+	margin-left: auto;
+}
+.pills button:last-of-type {
+	border-top-right-radius: 1vh;
+	border-bottom-right-radius: 1vh;
+	margin-right: auto;
+}
+
+body.control button#control,
+body.customize button#customize {
+	background: #888;
+	color: #fff;
+}
+
+
+
+
+
+/* Views */
+
+.views {
+	padding: 6vh 0;
+	min-height: 6vh;
+	display: block;
+}
+.views > div {
+	display: none;
+}
+
+body.control div#controlView,
+body.customize div#customizeView {
+	display: block;
+}
+
+
+
+
+/* Controls */
+
+#controls {
+	margin: 2vh 0;
+	display: inline-grid;
+	
+	grid-template-columns: 8vh 8vh 8vh;
+	grid-template-rows: 8vh 8vh 8vh;
+	grid-gap: 0;
+}	
+#controls #button-forward {
+	grid-column: 2;
+	grid-row: 1;
+}
+#controls #button-left {
+	grid-column: 1;
+	grid-row: 2;
+}
+#controls #button-right {
+	grid-column: 3;
+	grid-row: 2;
+}
+#controls #button-reverse {
+	grid-column: 2;
+	grid-row: 3;
+}
+
+#controls button {
+	padding: 1vh 2vh;
+	font-size: 2vh;
+}
+
+#controls button:active,
+.forward #controls button#button-forward,
+.reverse #controls button#button-reverse,
+.left #controls button#button-left,
+.right #controls button#button-right {
+	background: #888;
+	color: #444;
+}
+
+
+
+
+
+/* Style editor */
+
+style[contenteditable] {
+	white-space: pre;
+	font-family: monospace;
+	color: #fff;
+	
+	font-size: 2vh;
+	text-align: left;
+	margin: 0 10vh 10vh;
+	outline: none;
+}
+
+.connected style[contenteditable] {
+	display: block;
+}
+
+
+
