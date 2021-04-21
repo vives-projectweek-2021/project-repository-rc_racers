@@ -29,8 +29,11 @@ button {
 }
 
 .video {
+	display: block;
+	margin: auto;
 	max-width: 400px;
 	max-height: 400px;
+	grid-area: two;
 }
 
 
@@ -47,8 +50,8 @@ body.connected .content {
 }
 
 .grid{
-    display: grid;
-    grid-template-columns: 300px 300px 300px;
+  display: grid;
+  grid-template-areas: 'one two three';
 	color: white;
 	margin-left: 17%;
 	margin-right: 17%;
@@ -138,9 +141,11 @@ body.connected .settings {
 }
 
 .controls {
+	display: block;
 	color: white;
 	font-size: 30px;
-	margin-top: 35px;
+	margin: auto;
+	text-align: center;
 }
 
 
@@ -160,28 +165,6 @@ body.connected .settings {
 	font-size: 2vh;
 	background: #333;
 }
-.pills button:first-of-type {
-	border-left: .3vh solid #888;
-	border-top-left-radius: 1vh;
-	border-bottom-left-radius: 1vh;
-	margin-left: auto;
-}
-.pills button:last-of-type {
-	border-top-right-radius: 1vh;
-	border-bottom-right-radius: 1vh;
-	margin-right: auto;
-}
-
-body.control button#control,
-body.customize button#customize {
-	background: #888;
-	color: #fff;
-}
-
-
-
-
-
 /* Views */
 
 .views {

@@ -12,6 +12,7 @@
 - Controlled via S-Brick (Bluetooth)
 - Using arduino LCD to measure speed.
 - NFC: to activate checkpoints.
+- Using light sensor for start/stop
 
 ## Members
 
