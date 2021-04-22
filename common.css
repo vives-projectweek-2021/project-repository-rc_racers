@@ -10,15 +10,12 @@
 	position: absolute;
 	top: 0;
 	left: 5rem;
-    width: 30rem;
-    z-index: 100;
-
+  width: 30rem;
+  z-index: 100;
 	box-sizing: border-box;
 	padding: 4rem 2rem 0;
-
-	background: #fff;
-	border-bottom-left-radius: 2rem;
-	border-bottom-right-radius: 2rem;
+	background: lightgray;
+	border-radius: 2rem;
 
 	color: #000;
 	font-size: 1.6rem;
@@ -46,11 +43,11 @@ body.connected .connect {
 	color: #aaa;
 }
 .connect h1 svg {
-    position: relative;
+  position: relative;
 	top: -1rem;
 	width: 5rem;
 	vertical-align: middle;
-	fill: #367ebd;
+	fill: #595a5c;
 }
 .connect button {
 	background: #367ebd;
@@ -99,8 +96,8 @@ input[type=checkbox]::before {
 }
 input[type=checkbox]::after {
 	position: absolute;
-    display: block;
-    content: '';
+  display: block;
+  content: '';
 	border-radius: 0.4vh;
 	top: .58vh;
 	left: .65vh;

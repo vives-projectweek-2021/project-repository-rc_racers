@@ -10,30 +10,33 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#8cc63f">
 	</head>
-	
-	<body class="control">
-		<div class="connect">
-			<h1>
-				<p>Bluetooth</p>
-			</h1>
-			<p>
-				To use this. You need a LEGO RC Tracked Racer with SBrick. Don't have one? <a id='emulate'>Emulate!</a>
-			</p>
-
-			<button id="connect">Connect</button>
-		</div>
-		<div>
-			<h1 class="title">RC-Racers</h1>
-		</div>
-		<div class="grid">
-			<div class="scoreboard">
-				<h2>Scoreboard</h2>
-				<p>Player 1:</p>
-				<p>Player 2:</p>
+		<body class="control">
+			<div class="connect">
+				<h1>
+					<p>Bluetooth</p>
+				</h1>
+				<p>
+					To use this. You need a LEGO RC Tracked Racer with SBrick. Don't have one? <a id="emulate">Emulate!</a>
+				</p>
+					<button id="connect">Connect</button>
 			</div>
-			<video class="video" id="myVidPlayer" controls muted autoplay></video>
-			<h2>Score</h2>
-		</div>
+			<div>
+				<h1 class="title">RC-Racers</h1>
+			</div>
+			<div class="grid">
+				<div class="scoreboard">
+					<h2>Scoreboard</h2>
+					<p>Player 1:</p>
+					<p>Player 2:</p>
+				</div>
+				<iframe class="video" scrolling="no" width="560" height="315" src="http://192.168.137.207:8080/video" frameborder="0" allowfullscreen></iframe>
+				<div class="checkpoint">
+					<h2>Score</h2>
+					<h4>checkpoint 1:<a id="checkpoint1"></a></h4>
+					<h4>checkpoint 2:<a id="checkpoint2"></a></h4>
+				</div>
+
+			</div>
 		
 		<div class="settings">
 			<div class="pills">
