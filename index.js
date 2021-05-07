@@ -1,3 +1,63 @@
+/* Scoreboard*/
+var intervalID = window.setInterval(checkScore, 1000);
+
+function checkScore() {
+  // go check API 
+ 	Http.open("GET", url);
+	Http.send();
+	console.log("works")
+}
+
+const Http = new XMLHttpRequest();
+const url = 'http://localhost:3000';
+Http.open("GET", url);
+Http.send();
+
+var count = 0;
+var scoreboard = 0;
+
+var count = 0;
+function myCounter() {
+  counter.innerHTML = "Count: " + ++count;
+  score.innerHTML = "Score: " + scoreboard;
+}
+
+Http.onreadystatechange=(e)=> {
+
+	if (Http.responseText.includes("checkpoint 1")){
+		checkpoint = Http.responseText
+		console.log(Http.responseText)
+		checkpoint1.innerHTML = "Status checkpoint 1: " + checkpoint;
+		scoreboard += 10;
+	}
+	else if (Http.responseText.includes("checkpoint 2")){
+		checkpoint = Http.responseText
+		console.log(Http.responseText)
+		checkpoint2.innerHTML = "Status checkpoint 2: " + checkpoint;
+		scoreboard += 20;
+	}
+
+}
+
+document.getElementById('startbutton').addEventListener('click', (e) => {
+	myTimer = setInterval(myCounter, 1000);
+});
+
+document.getElementById('resetbutton').addEventListener('click', (e) => {
+	count = 0;
+	scoreboard = 0;
+	counter.innerHTML = "Count: " + count;
+	score.innerHTML = "Count: " + scoreboard;
+});
+
+/* var testbutton = document.getElementById("testbutton"), count = 0;
+testbutton.onclick = function() {
+	count += 1;
+	count = Http.responseText
+	score.innerHTML = "Score: " + count;
+}
+ */
+
 /* Pills */
 
 document.getElementById('control').addEventListener('click', (e) => {
