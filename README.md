@@ -6,6 +6,15 @@
 - Race against other teams
 - ( make noise when you have driven through heckpoint.)
 
+## Current progressù
+
+- webpage with:
+  - controls
+  - scoreboard
+  - live POV feed
+- assembled starting checkpoint
+
+
 ## Materials
 
 - Lego RC Tank
