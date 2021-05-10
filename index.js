@@ -50,6 +50,10 @@ document.getElementById('resetbutton').addEventListener('click', (e) => {
 	score.innerHTML = "Count: " + scoreboard;
 });
 
+document.getElementById('stopbutton').addEventListener('click', (e) => {
+	myTimer = setInterval(0, 0);
+});
+
 /* var testbutton = document.getElementById("testbutton"), count = 0;
 testbutton.onclick = function() {
 	count += 1;
