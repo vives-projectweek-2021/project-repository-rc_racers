@@ -11,7 +11,9 @@
 - webpage with:
   - controls
   - scoreboard
-  - live POV feed
+![screenshot website](./img/website.png)
+  - live POV feed 
+![picture of racecar](./img/front_facing_cam.jpg)
 - assembled starting checkpoint
 
 
