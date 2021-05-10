@@ -13,14 +13,18 @@ const url = 'http://localhost:3000';
 Http.open("GET", url);
 Http.send();
 
-var count = 0;
+var milisecondcount = 0;
+var secondcount = 0;
 var scoreboard = 0;
 var counterstate = false;
 
-var count = 0;
 function myCounter() {
-  counter.innerHTML = "Count: " + ++count;
-  score.innerHTML = "Score: " + scoreboard;
+	milisecondcount++;
+	milisecondcount = milisecondcount % 100
+	if (milisecondcount == 99) {
+		secondcount++;
+	}
+  counter.innerHTML = "Count: " + secondcount + ":" + milisecondcount;
 }
 
 Http.onreadystatechange=(e)=> {
@@ -42,17 +46,15 @@ Http.onreadystatechange=(e)=> {
 
 document.getElementById('startbutton').addEventListener('click', (e) => {
 	if (!counterstate) {
-		myTimer = setInterval(myCounter, 1000);
+		myTimer = setInterval(myCounter, 10);
 		counterstate = true;
 	}
-	
 });
 
 document.getElementById('resetbutton').addEventListener('click', (e) => {
-	count = 0;
-	scoreboard = 0;
-	counter.innerHTML = "Count: " + count;
-	score.innerHTML = "Score: " + scoreboard;
+	milisecondcount = 0;
+	secondcount = 0;
+	counter.innerHTML = "Count: " + secondcount + ":" + milisecondcount;
 });
 
 document.getElementById('stopbutton').addEventListener('click', (e) => {
