@@ -6,7 +6,7 @@
 - Race against other teams
 - ( make noise when you have driven through heckpoint.)
 
-## Current progressù
+## Current progress
 
 - webpage with:
   - controls
