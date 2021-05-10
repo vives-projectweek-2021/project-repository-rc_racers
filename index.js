@@ -44,6 +44,13 @@ Http.onreadystatechange=(e)=> {
 
 }
 
+document.getElementById('button-forward').addEventListener('click', (e) => {
+	if (!counterstate) {
+		myTimer = setInterval(myCounter, 10);
+		counterstate = true;
+	}
+});
+
 document.getElementById('startbutton').addEventListener('click', (e) => {
 	if (!counterstate) {
 		myTimer = setInterval(myCounter, 10);
@@ -109,7 +116,6 @@ function handleKeyEvent(event) {
 	if (event.key == 'l' && event.type == 'keydown') {
 		executeCommand('lights');
 		event.preventDefault();
-
 		return;
 	}
 
@@ -122,7 +128,7 @@ function handleKeyEvent(event) {
 
 		event.preventDefault();
 	}
-	
+
 	evaluateCommands();
 }
 
@@ -244,7 +250,10 @@ function executeCommand(value) {
     switch (value) {
         case 'forward':
         	updateCommand('forward');
-        	
+        	if (!counterstate) {
+						myTimer = setInterval(myCounter, 10);
+						counterstate = true;
+					}
 			if (SBrick.isConnected()) {		            	
             	SBrick.quickDrive([
 					{ channel: SBrick.CHANNEL1, direction: SBrick.CW, power: SBrick.MAX },
