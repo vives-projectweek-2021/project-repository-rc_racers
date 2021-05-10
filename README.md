@@ -23,16 +23,17 @@ webpage with:
 
 ## How it works
 We mounted a ESP32 camera onto the car which sets up a server that streams the live feed. The data then goes to the central webserver 
-which displays the feed to the user and sends inputs to the S-brick through bluetooth. We also have the start/finish that sends a signal when the something passes through it, 
-this sends a signal using the mqtt protocol using mosquito.
+which displays the feed to the user and sends inputs to the S-brick through bluetooth. We also have the start/finish 
+that sends a signal when the something passes through it using a IR led and receiver, this sends a signal using the mqtt protocol in mosquito.
 
 ## Materials
 
 - Lego RC Tank
 - Controlled via S-Brick (Bluetooth)
-- Using arduino LCD to measure speed.
-- NFC: to activate checkpoints.
-- Using light sensor for start/stop
+- ESP32 camera for live feed
+- checkpoint made with builder blocks
+- IR led and transistor(receiver)
+- raspberry pi to send receiver data to webserver
 
 ## Members
 
