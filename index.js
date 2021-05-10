@@ -15,6 +15,7 @@ Http.send();
 
 var count = 0;
 var scoreboard = 0;
+var counterstate = false;
 
 var count = 0;
 function myCounter() {
@@ -40,18 +41,23 @@ Http.onreadystatechange=(e)=> {
 }
 
 document.getElementById('startbutton').addEventListener('click', (e) => {
-	myTimer = setInterval(myCounter, 1000);
+	if (!counterstate) {
+		myTimer = setInterval(myCounter, 1000);
+		counterstate = true;
+	}
+	
 });
 
 document.getElementById('resetbutton').addEventListener('click', (e) => {
 	count = 0;
 	scoreboard = 0;
 	counter.innerHTML = "Count: " + count;
-	score.innerHTML = "Count: " + scoreboard;
+	score.innerHTML = "Score: " + scoreboard;
 });
 
 document.getElementById('stopbutton').addEventListener('click', (e) => {
 	myTimer = setInterval(0, 0);
+	counterstate = false;
 });
 
 /* var testbutton = document.getElementById("testbutton"), count = 0;
