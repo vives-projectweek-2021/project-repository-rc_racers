@@ -32,14 +32,21 @@
 						<button id="resetbutton">Reset</button>
 					</div>
 				</div>
-				<iframe class="video" scrolling="yes" width="560" height="315" src="http://172.20.101.55" frameborder="0" allowfullscreen></iframe>
+				<iframe class="video" src="http://192.168.1.10:8888" frameborder="0" width="1000" scrolling="no" height="400" onload="resizeIframe(this)"></iframe>
 				<div class="checkpoint">
-					<h4><a id="checkpoint1"></a></h4>
-					<h4><a id="checkpoint2"></a></h4>
+					<h4><a id="checkpoint1">Status checkpoint 1:</a></h4>
+					<h4><a id="checkpoint2">Status checkpoint 2:</a></h4>
 				</div>
 
 			</div>
-		
+		<div id="myModal" class="modal">
+			<!-- Modal content -->
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<h4><a id="modaltext">some text in the modal...</a></h4>
+			</div>
+		</div>
+	
 		<div class="settings">
 			<div class="pills">
 				<h2 class="controls">Controls</h2>
@@ -98,7 +105,11 @@
 				</style>			
 			</div>			
 		</div>
-		
+		<script>
+			function resizeIframe(obj) {
+			  obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+			}
+		</script>
 		<script type="text/javascript" src="lib/promise-queue.js"></script>
 		<script type="text/javascript" src="lib/bluetooth.js"></script>
 		<script type="text/javascript" src="lib/sbrick.js"></script>
