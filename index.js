@@ -1,81 +1,74 @@
 /* Scoreboard*/
-var intervalID = window.setInterval(checkScore, 1000);
-
-function checkScore() {
-  // go check API 
- 	Http.open("GET", url);
-	Http.send();
-	console.log("works")
-}
-
-const Http = new XMLHttpRequest();
-const url = 'http://localhost:3000';
-Http.open("GET", url);
-Http.send();
 
 var milisecondcount = 0;
 var secondcount = 0;
 var scoreboard = 0;
 var counterstate = false;
 
-function myCounter() {
-	milisecondcount++;
-	milisecondcount = milisecondcount % 100
-	if (milisecondcount == 99) {
-		secondcount++;
-	}
-  counter.innerHTML = "Count: " + secondcount + ":" + milisecondcount;
-}
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
 
-Http.onreadystatechange=(e)=> {
-
-	if (Http.responseText.includes("checkpoint 1")){
-		checkpoint = Http.responseText
-		console.log(Http.responseText)
-		checkpoint1.innerHTML = "Status checkpoint 1: " + checkpoint;
-		scoreboard += 10;
-	}
-	else if (Http.responseText.includes("checkpoint 2")){
-		checkpoint = Http.responseText
-		console.log(Http.responseText)
-		checkpoint2.innerHTML = "Status checkpoint 2: " + checkpoint;
-		scoreboard += 20;
-	}
-
-}
-
+//timer start door op de toets naar voor in te drukken op het toetsenbord
 document.getElementById('button-forward').addEventListener('click', (e) => {
 	if (!counterstate) {
 		myTimer = setInterval(myCounter, 10);
 		counterstate = true;
 	}
 });
-
+//start timer
 document.getElementById('startbutton').addEventListener('click', (e) => {
 	if (!counterstate) {
 		myTimer = setInterval(myCounter, 10);
 		counterstate = true;
 	}
 });
-
+//reset timer
 document.getElementById('resetbutton').addEventListener('click', (e) => {
 	milisecondcount = 0;
 	secondcount = 0;
 	counter.innerHTML = "Count: " + secondcount + ":" + milisecondcount;
 });
-
+//Stop timer
 document.getElementById('stopbutton').addEventListener('click', (e) => {
-	myTimer = setInterval(0, 0);
-	counterstate = false;
+	stopCounter();
 });
 
-/* var testbutton = document.getElementById("testbutton"), count = 0;
-testbutton.onclick = function() {
-	count += 1;
-	count = Http.responseText
-	score.innerHTML = "Score: " + count;
+function stopCounter() {
+	myTimer = setInterval(0, 0);
+	counterstate = false;
 }
- */
+function myCounter() {
+	milisecondcount++;
+	milisecondcount = milisecondcount % 100
+	if (milisecondcount == 99) {
+		secondcount++;
+	}
+	//checkpoints data van raspberry pi ging hier komen
+	if (secondcount == 8) {
+		checkpoint1.innerHTML = "Status checkpoint 1: passed";
+	}
+	else if (secondcount == 21) {
+		checkpoint2.innerHTML = "Status checkpoint 2: passed";
+		//popup bij het einde 
+		modaltext.innerHTML = "You finished the parkour with a time of: " + secondcount + "," + milisecondcount + "seconds";
+		modal.style.display = "block";
+		
+	}
+  	counter.innerHTML = "Count: " + secondcount + ":" + milisecondcount;
+
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 
 /* Pills */
 
