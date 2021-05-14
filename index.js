@@ -1,5 +1,68 @@
-/* Scoreboard*/
+//mqtt protocol
 
+function startConnect() {
+    //define a client id
+    clientID = "clientID-21"
+	host = "mqtt.devbit.be"
+	port = 80
+	topic = "projectweek2021"
+    
+    // Initialize new Paho client connection
+    client = new Paho.MQTT.Client(host, Number(port), clientID);
+
+    // Set callback handlers
+    client.onConnectionLost = onConnectionLost;
+    client.onMessageArrived = onMessageArrived;
+
+    // Connect the client, if successful, call onConnect function
+    client.connect({ 
+        onSuccess: onConnect,
+    });
+}
+
+// Called when the client connects
+function onConnect() {
+    // Subscribe to the requested topic
+    client.subscribe(topic);
+}
+
+//Called when the client loses its connection
+function onConnectionLost(responseObject) {
+    document.getElementById("messages").innerHTML += '<span>ERROR: Connection lost</span><br/>';
+    if (responseObject.errorCode !== 0) {
+        document.getElementById("messages").innerHTML += '<span>ERROR: ' + + responseObject.errorMessage + '</span><br/>';
+    }
+}
+
+// Called when a message arrives
+function onMessageArrived(message) {
+    console.log("onMessageArrived: " + message.payloadString);
+	statuscheckpoint = message.payloadString
+	if (statuscheckpoint.includes('1')) {
+		checkpoint1.innerHTML = "Status checkpoint 1: passed";
+	}
+	else if (statuscheckpoint.includes('2')) {
+		checkpoint2.innerHTML = "Status checkpoint 2: passed";
+		
+	}
+    //document.getElementById("messages").innerHTML += '<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span><br/>';
+}
+
+// Called when the disconnection button is pressed
+function startDisconnect() {
+    client.disconnect();
+    document.getElementById("messages").innerHTML += '<span>Disconnected</span><br/>';
+}
+
+// Updates #messages div to auto-scroll
+function updateScroll() {
+    var element = document.getElementById("messages");
+    element.scrollTop = element.scrollHeight;
+}
+
+
+/* Scoreboard*/
+var statuscheckpoint
 var milisecondcount = 0;
 var secondcount = 0;
 var scoreboard = 0;
@@ -11,6 +74,7 @@ var span = document.getElementsByClassName("close")[0];
 //timer start door op de toets naar voor in te drukken op het toetsenbord
 document.getElementById('button-forward').addEventListener('click', (e) => {
 	if (!counterstate) {
+		startConnect()
 		myTimer = setInterval(myCounter, 10);
 		counterstate = true;
 	}
@@ -44,16 +108,11 @@ function myCounter() {
 		secondcount++;
 	}
 	//checkpoints data van raspberry pi ging hier komen
-	if (secondcount == 8) {
-		checkpoint1.innerHTML = "Status checkpoint 1: passed";
-	}
-	else if (secondcount == 21) {
-		checkpoint2.innerHTML = "Status checkpoint 2: passed";
+	
 		//popup bij het einde 
 		modaltext.innerHTML = "You finished the parkour with a time of: " + secondcount + "," + milisecondcount + "seconds";
 		modal.style.display = "block";
-		
-	}
+	
   	counter.innerHTML = "Count: " + secondcount + ":" + milisecondcount;
 
 }
